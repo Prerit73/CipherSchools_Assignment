@@ -25,23 +25,21 @@ void printKSmallestNumber(vector<int> &nums, int k)
         }
         int currentElement = nums[i];
 
-        if (max_element > currentElement)
+        if (nums[max_position] > currentElement)
         {
-
-            int m = max_position;
-            while (m < k - 1)
-            {
-                nums[m] = nums[m + 1];
-                m++;
-            }
-            nums[k - 1] = currentElement;
+            swap(nums[max_position], nums[i]);
         }
     }
-    int ans=0;
-    for(int i=0;i<k;i++){
-        ans=max(ans,nums[i]);
+    int ans = 0;
+    for (int i = 0; i < k; i++)
+    {
+        ans = max(ans, nums[i]);
     }
-    cout<<ans;
+    cout << ans;
+}
+
+void check(vector<int> &nums, int k)
+{
 }
 
 int main()
