@@ -4,11 +4,11 @@ using namespace std;
 int kthSmallest(vector<vector<int>> &matrix, int k)
 {
     int n = matrix.size();
-    int le = matrix[0][0], ri = matrix[n - 1][n - 1];
+    int left = matrix[0][0], right = matrix[n - 1][n - 1];
     int mid = 0;
-    while (le < ri)
+    while (left < right)
     {
-        mid = le + (ri - le) / 2;
+        mid = left + (right - left) / 2;
         int num = 0;
         for (int i = 0; i < n; i++)
         {
@@ -17,14 +17,14 @@ int kthSmallest(vector<vector<int>> &matrix, int k)
         }
         if (num < k)
         {
-            le = mid + 1;
+            left = mid + 1;
         }
         else
         {
-            ri = mid;
+            right = mid;
         }
     }
-    return le;
+    return left;
 }
 int main()
 {
