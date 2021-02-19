@@ -50,8 +50,38 @@ void print(Node *head)
         temp = temp->next;
     }
 }
+void removeAllDuplicates(Node *&head)
+{
+    Node *dummy = new Node();
+
+    dummy->next = head;
+    Node *prev = dummy;
+    Node *current = head;
+
+    while (current != NULL)
+    {
+
+        while (current->next != NULL && prev->next->data == current->next->data)
+            current = current->next;
+
+        if (prev->next == current)
+            prev = prev->next;
+
+        else
+            prev->next = current->next;
+
+        current = current->next;
+    }
+
+    head = dummy->next;
+}
 int main()
 {
     Node *head = takeInput();
+    cout<<"Current Elements"<<endl;
+    print(head);
+    cout<<endl;
+    removeAllDuplicates(head);
+    cout<<"After Removing duplicate"<<endl;
     print(head);
 }
