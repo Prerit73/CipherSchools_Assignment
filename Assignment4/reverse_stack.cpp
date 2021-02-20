@@ -12,7 +12,7 @@ void insertAtBottom(stack<int> &s,int element){
     s.push(topElement);
 }
 
-void reverse(stack<int> s){
+void reverse(stack<int> &s){
     if(s.empty()){
         return;
     }
