@@ -26,10 +26,10 @@ int maxSumSubtree(TreeNode *root, int &res)
     {
         return 0;
     }
-    int l = maxSumSubtree(root->left, res);
-    int r = maxSumSubtree(root->right, res);
+    int left = maxSumSubtree(root->left, res);
+    int right = maxSumSubtree(root->right, res);
 
-    int curr = (root->data + l + r);
+    int curr = (root->data + left + right);
     res = max(res, curr);
     return curr;
 }
@@ -37,7 +37,7 @@ int maxSumSubtree(TreeNode *root, int &res)
 int maxSumSubtree(TreeNode *root)
 {
     int res = INT_MIN;
-   maxSumSubtree(root, res);
+    maxSumSubtree(root, res);
     return res;
 }
 int main()
@@ -49,5 +49,6 @@ int main()
     root->left->right = new TreeNode(5);
     root->right->left = new TreeNode(6);
     root->right->right = new TreeNode(7);
+    
     cout << maxSumSubtree(root);
 }

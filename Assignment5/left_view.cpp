@@ -1,46 +1,56 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class TreeNode {
-    public:
+class TreeNode
+{
+public:
     int data;
-    TreeNode * left;
-    TreeNode * right;
-    TreeNode(int data) {
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int data)
+    {
         this->data = data;
         this->left = this->right = NULL;
     }
 
-    TreeNode() {
+    TreeNode()
+    {
         TreeNode(0);
     }
 };
 
-void leftView(TreeNode * root) {
+void leftView(TreeNode *root)
+{
     if (root == NULL)
         return;
-    queue<TreeNode *> Q;
-    Q.push(root);
-    while (!Q.empty()) {
-        int size = Q.size();
-        for (int i = 0; i < size; i++) {
-            root = Q.front(); Q.pop();
-            if (i == 0) {
+    queue<TreeNode *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        int size = q.size();
+        for (int i = 0; i < size; i++)
+        {
+            root = q.front();
+            q.pop();
+            if (i == 0)
+            {
                 cout << root->data << " ";
             }
-            
-            if (root->left != NULL) {
-                Q.push(root->left);
+
+            if (root->left != NULL)
+            {
+                q.push(root->left);
             }
 
-            if (root->right != NULL) {
-                Q.push(root->right);
+            if (root->right != NULL)
+            {
+                q.push(root->right);
             }
         }
     }
-}int main()
+}
+int main()
 {
-
     TreeNode *root = new TreeNode(10);
     root->left = new TreeNode(20);
     root->right = new TreeNode(30);

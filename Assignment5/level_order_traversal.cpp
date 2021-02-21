@@ -39,7 +39,6 @@ void printLevel(TreeNode *root)
 
 int main()
 {
-
     TreeNode *root = new TreeNode(10);
     root->left = new TreeNode(20);
     root->right = new TreeNode(30);
