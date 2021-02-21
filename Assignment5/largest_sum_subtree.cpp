@@ -15,29 +15,28 @@ public:
 
     TreeNode()
     {
-        // constructor chaining
         TreeNode(0);
     }
 };
 
-int maxSumSubtree(TreeNode *root, int &res)
+int largestSumSubtree(TreeNode *root, int &res)
 {
     if (root == NULL)
     {
         return 0;
     }
-    int left = maxSumSubtree(root->left, res);
-    int right = maxSumSubtree(root->right, res);
+    int left = largestSumSubtree(root->left, res);
+    int right = largestSumSubtree(root->right, res);
 
     int curr = (root->data + left + right);
     res = max(res, curr);
     return curr;
 }
 
-int maxSumSubtree(TreeNode *root)
+int largestSumSubtree(TreeNode *root)
 {
     int res = INT_MIN;
-    maxSumSubtree(root, res);
+    largestSumSubtree(root, res);
     return res;
 }
 int main()
@@ -50,5 +49,5 @@ int main()
     root->right->left = new TreeNode(6);
     root->right->right = new TreeNode(7);
     
-    cout << maxSumSubtree(root);
+    cout << largestSumSubtree(root);
 }
