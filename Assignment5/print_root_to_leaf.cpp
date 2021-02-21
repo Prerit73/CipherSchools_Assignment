@@ -44,7 +44,6 @@ void printAllPaths(TreeNode *root, vector<int> &path)
         printAllPaths(root->left, path);
         printAllPaths(root->right, path);
     }
-    // backtracking step
     path.pop_back();
 }
 int main()

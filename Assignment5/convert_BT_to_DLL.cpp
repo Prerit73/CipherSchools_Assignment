@@ -52,7 +52,6 @@ TreeNode *BTToDLL(TreeNode *root)
 
 int main()
 {
-
     TreeNode *root = new TreeNode(10);
     root->left = new TreeNode(5);
     root->right = new TreeNode(20);

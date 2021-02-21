@@ -39,7 +39,6 @@ TreeNode *lca(TreeNode *root, int n1, int n2)
 
 int main()
 {
-
     TreeNode *root = new TreeNode(10);
     root->left = new TreeNode(20);
     root->right = new TreeNode(30);
