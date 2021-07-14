@@ -1,28 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void balancedParenthesisHelper(vector<string>& result, int open, int close, int n, string str) {
-    if (open < 0 || close < 0 || open > n || close > n || close > open) {
+void generateParentheseHelper(int open , int close, string &resultSoFar, vector<string> &res){
+    if (open < 0 || close < 0) {
         return;
     }
-    if (open == n && close == n) {
-        result.push_back(str);
+    if(open==0 && close==0){
+        res.push_back(resultSoFar);
         return;
     }
-
-    balancedParenthesisHelper(result, open + 1, close, n, str + "(");
-    balancedParenthesisHelper(result, open, close + 1, n, str + ")");
-}
-
-vector<string> balancedParenthesis(int n) {
-    vector<string> result;
-    balancedParenthesisHelper(result, 0, 0, n, "");
-    return result;
-}
-int main() {
-    vector<string> result = balancedParenthesis(3);
-    for (string res : result) {
-        cout << res << endl;
+    if(open>close){
+        return;
+    }else{
+        resultSoFar.push_back('(');
+        generateParentheseHelper(open-1,close,resultSoFar,res);
+        resultSoFar.pop_back();
+        
+        resultSoFar.push_back(')');
+        generateParentheseHelper(open,close-1,resultSoFar,res);
+        resultSoFar.pop_back();
     }
+}
 
+vector<string> generateParenthese(int n){
+    vector<string>res;
+    string resultSoFar="";
+    generateParentheseHelper(n,n,resultSoFar,res);
+    return res;
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<string>ans;
+    ans=generateParenthese(n);
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<endl;
+    }
 }
