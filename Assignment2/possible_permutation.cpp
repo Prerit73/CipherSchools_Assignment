@@ -20,5 +20,5 @@ vector<string> generatePermutation(string str) {
 }
 int main()
 {
-    vector<string>ans=generatePermutation("ABC", "");
+    vector<string>ans=generatePermutation("ABC");
 }
